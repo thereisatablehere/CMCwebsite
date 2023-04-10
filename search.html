@@ -1,0 +1,43 @@
+<!--
+    -Info icon from: https://www.flaticon.com/free-icon/info_665049?term=info&page=1&position=1&origin=search&related_id=665049
+    -Remove icon from: https://www.flaticon.com/free-icon/delete_1799391?term=remove&page=1&position=48&origin=search&related_id=1799391
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- overrides default stylesheet -->
+    <style>
+        h1 {
+            margin-bottom: 0;
+        }
+    </style>
+
+    <title>Search</title>
+</head>
+<body>
+    <script src="loadnavbar.js"></script>
+
+    <div id="container">
+        <h1>SEARCH FOR A SCHOOL</h1>
+        <p>Click the white box below to add a paremeter to search for.<br>Confused about a parameter you added? Move your mouse over the i next to it.</p>
+        
+        <p id="invalidInputErrorMessage">!PLEASE FIX YOUR INPUT</p>
+
+        <!-- all of this form is handled entirely by js in addSearchParameterSelection -->
+        <form id="searchParametersContainer" onsubmit="return validateForm()"></form>
+        
+        <div id="searchControls">
+            <input class="searchControlButton" type="submit" form="searchParametersContainer">
+            <input class="searchControlButton" type="reset" form="searchParametersContainer" onclick="clearErrorsOnReset()">
+            <button id="removeAllParameters" class="searchControlButton" onclick="removeAllParameters()">Remove All Parameters</button>
+        </div>
+    </div>
+    
+    
+    <script src="addSearchParameterSelection.js"></script>
+    <script src="formHandler.js"></script>
+</body>
+</html>
