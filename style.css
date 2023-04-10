@@ -116,6 +116,7 @@ h3 {
     height: 300px;
     padding-top: 7px;
     background-color: #a3aeb9;
+    border-radius: var(--defaultRadius);
     /* background-color: var(--accentColorDarker); */
     visibility: hidden;
 
@@ -299,7 +300,7 @@ option {
 #invalidInputErrorMessage {
     font-family: Anuphan;
     font-size: 20px;
-    margin-top: 95px;
+    margin-top: 152px;
     color: var(--errorColor);
     background-color: #FFCDD2;
     padding: 7px;
