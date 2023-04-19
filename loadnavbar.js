@@ -133,5 +133,8 @@ function closeAccountPopup() {
 function login() {
     popup.userType = 1;
 
+    // update the popup incase it is already open
+    loadPopup();
+
     return false;
 }
