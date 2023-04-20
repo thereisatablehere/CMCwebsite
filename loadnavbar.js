@@ -42,7 +42,7 @@ let popup = {
         // regular user
         [
             {
-                href: "index.html", 
+                href: "manageProfile.html", 
                 text: "Manage My Profile"
             }, 
             {
@@ -98,7 +98,6 @@ function loadPopup() {
     // first remove existing content
     while (accContentRef.children.length > 0) {
         accContentRef.removeChild(accContentRef.children[0]);
-        console.log(accContentRef.children.length);
     }
 
     // actually add content

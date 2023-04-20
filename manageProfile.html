@@ -1,0 +1,61 @@
+<!--
+    -Visibility icon from: https://www.flaticon.com/free-icon/eye_159604?term=visibility&page=1&position=15&origin=search&related_id=159604
+-->
+
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .topInfo {
+            margin-bottom: 50px;
+        }
+    </style>
+    
+    <title>Manage Profile</title>
+    <head>
+</head>
+<body>
+    <!-- add nav bar -->
+    <script src="loadnavbar.js"></script>
+
+    <div id="container">
+
+        <h1>Manage Profile</h1>
+        <p class="topInfo">Here you can view, and edit, your profile information.</p>
+        
+        <div class="profileInfoContainer">
+            <p>First Name</p>
+            <input type="text" value="John" onfocus="getOriginalValue(this)" oninput="getOriginalValue(this)" onfocusout="ensureMinLength(this)" readonly>
+        </div>
+
+        <div class="profileInfoContainer">
+            <p>Last Name</p>
+            <input type="text" value="Doe" onfocus="getOriginalValue(this)" oninput="getOriginalValue(this)" onfocusout="ensureMinLength(this)" readonly>
+        </div>
+
+        <div class="profileInfoContainer">
+            <p>Username</p>
+            <input type="text" value="John_Doe" onfocus="getOriginalValue(this)" oninput="getOriginalValue(this)" onfocusout="ensureMinLength(this)" readonly>
+        </div>
+
+        <div class="profileInfoContainer">
+            <p>Password</p>
+            <div class="right">
+                <input id="password" type="password" value="password1234" onfocus="getOriginalValue(this)" oninput="getOriginalValue(this)" onfocusout="ensureMinLength(this)" readonly>
+                <img class="icon hoverEffect" src="Images/eye.png" onclick="togglePasswordVisibility()">
+            </div>
+        </div>
+
+        <div class="profileInfoContainer">
+            <p>Type</p>
+            <div class="verticalRight">
+                <input id="type" type="text" value="u" maxlength="1" onfocus="getOriginalValue(this)" onfocusout="hideTypeInstructions()" oninput="validateType()" readonly readonly>
+                <p id="typeInstructions">u for regular user, or a for admin. Note that to change type just press "u" or "a".</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="manageProfileScript.js"></script>
+</body>
+</html>

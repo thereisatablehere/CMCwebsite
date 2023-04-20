@@ -63,6 +63,13 @@ h3 {
     cursor: pointer;
     filter: contrast(50%);
 }
+.topInfo { 
+    max-width: 1000px;
+    margin: 0;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
 
 /* navbar */
 
@@ -155,11 +162,10 @@ h3 {
     font-family: Anuphan;
     color: black;
     text-decoration: none;
-    font-weight: bold;
     font-size: 20px;
     padding-bottom: 10px;
     margin-right: 15px;
-    border-top: 1px solid var(--secondaryColor);
+    border-top: 1px solid var(--mainColor);
     outline: none;
 }
 #accountPopup #accountPopupContent a:nth-child(1) {
@@ -216,6 +222,9 @@ option {
 }
 #searchParametersContainer div p, #searchParametersContainer div input {
     font-size: 18px;
+}
+#searchParametersContainer div input:focus {
+    border-bottom: 2px solid var(--accentColor);
 }
 #searchParametersContainer div p {
     margin: 0;
@@ -311,6 +320,7 @@ option {
 }
 
 /* login */
+
 #loginForm{
     display: flex;
     flex-direction: column;
@@ -346,4 +356,54 @@ option {
 }
 #loginForm .submit:focus {
     border: none;
+}
+
+/* manage profile */
+
+.profileInfoContainer {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 15px;
+    align-self: center;
+}
+.profileInfoContainer p {
+    font-weight: bold;
+}
+.profileInfoContainer input {
+    outline: none;
+    border: none;
+    padding: 7px;
+    border-radius: var(--defaultRadius);
+    width: 200px;
+    background-color: transparent;
+}
+.profileInfoContainer input:focus {
+    border: 2px solid var(--accentColor);
+}
+.profileInfoContainer .right {
+    display: flex;
+    flex-direction: row;
+}
+.profileInfoContainer .right .icon {
+    position: absolute;
+    margin-left: 215px;
+}
+.profileInfoContainer .verticalRight {
+    display: flex;
+    flex-direction: column;
+}
+.profileInfoContainer .verticalRight p {
+    font-size: 11px;
+    position: absolute;
+    margin-top: 40px;
+    visibility: hidden;
+    color: var(--secondaryColor);
+}
+.profileInfoContainer .verticalRight p:hover {
+    cursor: default;
 }
