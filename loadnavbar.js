@@ -28,7 +28,7 @@ const navbarContent = `
 
 let popup = {
     ref: null, 
-    userType: 0,// guest, regular user, admin 
+    userType: 1,// guest, regular user, admin 
     content: [
         // guest
         [
@@ -90,15 +90,15 @@ document.body.onload = function () {
     accRef = document.getElementById("accountPopup");
     accContentRef = accRef.children[1];
 
+
     loadPopup();
 }
 
 function loadPopup() {
     // first remove existing content
-    if(accContentRef.children.length > 0) {
-        for(let i = 0; i < accContentRef.children.length; i++) {
-            accContentRef.removeChild(accContentRef.children[i]);
-        }
+    while (accContentRef.children.length > 0) {
+        accContentRef.removeChild(accContentRef.children[0]);
+        console.log(accContentRef.children.length);
     }
 
     // actually add content
@@ -107,7 +107,7 @@ function loadPopup() {
     for(let i = 0; i < contentRef.length; i++) {
         let element = document.createElement("a");
         element.setAttribute("href", contentRef[i].href);
-        element.innerHTML= contentRef[i].text;
+        element.innerHTML = contentRef[i].text;
 
         accContentRef.appendChild(element);
     }
