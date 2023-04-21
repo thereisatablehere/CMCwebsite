@@ -179,7 +179,7 @@ h3 {
     filter: contrast(50%);
 }
 
-/* serach page */
+/* search page */
 
 #searchParametersContainer {
     display: flex;
@@ -303,13 +303,13 @@ option {
     background-color: var(--accentColorLighter);
 }
 #searchControls #removeAllParameters {
-    background-color: var(--errorColor);
+    /* background-color: var(--errorColor); */
     width: fit-content;
     height: fit-content;
 }
-#searchControls #removeAllParameters:hover {
+/* #searchControls #removeAllParameters:hover {
     background-color: #EF9A9A;
-}
+} */
 #invalidInputErrorMessage {
     font-family: Anuphan;
     font-size: 20px;
@@ -392,6 +392,7 @@ option {
 .profileInfoContainer .right {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 .profileInfoContainer .right .icon {
     position: absolute;
