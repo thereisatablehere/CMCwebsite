@@ -523,3 +523,10 @@ option {
     width: 40%;
     border: none;
 }
+.detailedSchoolView div .emphasesData {
+    flex-direction: column;
+}
+.detailedSchoolView div .emphasesData p {
+    margin-bottom: -5px;
+    font-weight: normal;
+}

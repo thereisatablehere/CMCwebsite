@@ -1,7 +1,9 @@
--login
-    REG-manage my saved school
-    ADM-manage universities
-    ADM-manage users
 -view results
 -view school
+-login
+    ADM-manage universities
+    ADM-manage users
+-Make search page buttons look better
+-Make navbar popup look better
+-Make sure entire website is consistent
 -fancy animations
