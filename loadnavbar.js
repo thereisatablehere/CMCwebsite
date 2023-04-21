@@ -46,7 +46,7 @@ let popup = {
                 text: "Manage My Profile"
             }, 
             {
-                href: "index.html", 
+                href: "manageSavedSchools.html", 
                 text: "Manage My Saved Schools"
             }, 
             {

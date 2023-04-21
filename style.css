@@ -8,6 +8,7 @@
     --sidesIndent: 10px;
     --defaultRadius: 5px;
     --smallDefaultRadius: 3px;
+    --defaultContainerWidth: 350px;
     --mainColor: #17202A;
     --secondaryColor: #5D6D7E;
     --thirdColor: #BDC3C7;
@@ -363,7 +364,7 @@ option {
 .profileInfoContainer {
     display: flex;
     flex-direction: row;
-    width: 350px;
+    width: var(--defaultContainerWidth);
     height: 35px;
     justify-content: space-between;
     align-items: center;
@@ -406,4 +407,43 @@ option {
 }
 .profileInfoContainer .verticalRight p:hover {
     cursor: default;
+}
+
+/* mange saved schools */
+
+.schoolSavedContainer {
+    display: flex;
+    flex-direction: column;
+    width: 175px;
+    padding-top: 15px;
+    padding-bottom: 50px;
+    border-top: 1px solid var(--secondaryColor);
+}
+.schoolSavedContainer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.schoolSavedContainer .bottom {
+    justify-content: center;
+}
+.schoolSavedContainer div button {
+    outline: none;
+    border-radius: var(--defaultRadius);
+    border: none;
+    padding: 10px;
+    background-color: var(--fourthColor);
+}
+.schoolSavedContainer div button:hover {
+    outline: none;
+    border-radius: var(--defaultRadius);
+    border: none;
+    padding: 10px;
+    background-color: var(--accentColorLighter);
+}
+.schoolSavedContainer div .addOnText {
+    font-size: 12px;
+    position: absolute;
+    margin-top: 40px;
 }

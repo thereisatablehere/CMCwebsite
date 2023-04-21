@@ -1,5 +1,4 @@
 -login
-    REG-manage my profile
     REG-manage my saved school
     ADM-manage universities
     ADM-manage users
