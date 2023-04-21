@@ -25,13 +25,12 @@
     --errorColor: #EF5350;
 }
 
-/* text highlight color */
-::selection {
-    background-color: #85C1E9;
-}
 
 /* general stuff and home page*/
 
+::selection {
+    background-color: #85C1E9;
+}
 body {
     background-color: #F4F6F7;
     overflow-x: hidden;
@@ -414,16 +413,23 @@ option {
 .schoolSavedContainer {
     display: flex;
     flex-direction: column;
-    width: 175px;
-    padding-top: 15px;
-    padding-bottom: 50px;
-    border-top: 1px solid var(--secondaryColor);
+    width: 400px;
+    padding-top: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--secondaryColor);
 }
 .schoolSavedContainer div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+}
+.schoolSavedContainer .top h3 {
+    margin-left: 15px;
+    margin-right: 20px;
+    text-transform: uppercase;
 }
 .schoolSavedContainer .bottom {
     justify-content: center;
@@ -432,18 +438,84 @@ option {
     outline: none;
     border-radius: var(--defaultRadius);
     border: none;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: var(--fourthColor);
+    font-weight: normal;
 }
 .schoolSavedContainer div button:hover {
     outline: none;
     border-radius: var(--defaultRadius);
     border: none;
-    padding: 10px;
     background-color: var(--accentColorLighter);
+    cursor: pointer;
 }
 .schoolSavedContainer div .addOnText {
-    font-size: 12px;
+    font-size: 13px;
     position: absolute;
     margin-top: 40px;
+    margin-left: -138px;
+}
+.savedSchoolsContainer {
+    display: flex;
+    flex-direction: column;
+}
+.savedSchoolsContainer .schoolSavedContainer:last-child {
+    border: none;
+}
+.leftRightContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 25%;
+}
+.detailedSchoolView{
+    background-color: white;
+    border-radius: var(--defaultRadius);
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 450px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 75px;
+    overflow-y: scroll;
+    box-shadow: 2px 2px 10px var(--thirdColor);
+}
+.detailedSchoolView::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+}
+.detailedSchoolView::-webkit-scrollbar-thumb {
+    background-color: var(--thirdColor);
+    border-radius: 15px;
+}
+.detailedSchoolView::-webkit-scrollbar-thumb:hover {
+    background-color: #a6acaf;
+}
+.detailedSchoolView div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px dotted var(--thirdColor);
+}
+.detailedSchoolView div:last-child {
+    border: none;
+}
+.detailedSchoolView div p {
+    font-weight: bold;
+}
+.detailedSchoolView div div p:nth-child(1) {
+    font-weight: normal;
+}
+.detailedSchoolView div .detailedSchoolViewData {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 40%;
+    border: none;
 }
