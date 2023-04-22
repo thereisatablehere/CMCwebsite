@@ -196,6 +196,9 @@ function highlightInvalids() {
             behavior: "smooth"
         });
     }
+    else {
+        window.open("searchResults.html", "_self");
+    }
 
 }
 

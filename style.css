@@ -63,6 +63,11 @@ h3 {
     cursor: pointer;
     filter: contrast(50%);
 }
+.alternateHoverEffect:hover {
+    cursor: pointer;
+    background-color: var(--fourthColor);
+    border-radius: 10px;
+}
 .topInfo { 
     max-width: 1000px;
     margin: 0;
