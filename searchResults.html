@@ -1,6 +1,7 @@
 <!--
     -Bookmark open icon from: https://www.flaticon.com/free-icon/bookmark_1159580?related_id=1159580
-    -Bookmark closed icon from: https://www.flaticon.com/free-icon/bookmark_102279?term=bookmark&page=1&position=2&origin=search&related_id=102279
+    -Bookmark filled icon from: https://www.flaticon.com/free-icon/bookmark_102279?term=bookmark&page=1&position=2&origin=search&related_id=102279
+    -Back icon from: https://www.flaticon.com/free-icon/back_9126101?term=back&page=1&position=43&origin=search&related_id=9126101s
 -->
 
 <!DOCTYPE html>
@@ -15,14 +16,19 @@
     <script src="loadnavbar.js"></script>
 
     <div id="container">
-        <h1>Manage Saved Schools</h1>
-        <p class="topInfo">Here you can view, and and remove, your saved schools.</p>
+        <h1>Search Results</h1>
+        <p class="topInfo">Here you can view, and save, schools. You will also be able to find recommendations based off of any school you select.</p>
+
+        <div class="backButtonContainer" onclick="backToSearch()">
+            <img class="icon" src="Images/back.png">
+            <p>Back to Search</p>
+        </div>
         
         <div class="leftRightContainer">
             <div class="savedSchoolsContainer">
                 <div class="schoolSavedContainer">
                     <div class="top">
-                        <img class="icon hoverEffect" src="Images/bookmark_open.png">
+                        <img class="icon hoverEffect" src="Images/bookmark_open.png" onclick="toggleBookmark(this)">
                         <h3>Yale</h3>
                         <button onclick="view(this.parentNode.children[1].innerHTML)">View</button>
                     </div>
@@ -30,7 +36,7 @@
         
                 <div class="schoolSavedContainer">
                     <div class="top">
-                        <img class="icon hoverEffect" src="Images/bookmark_open.png">
+                        <img class="icon hoverEffect" src="Images/bookmark_open.png" onclick="toggleBookmark(this)">
                         <h3>St. John's University</h3>
                         <button onclick="view(this.parentNode.children[1].innerHTML)">View</button>
                     </div>
@@ -38,7 +44,7 @@
 
                 <div class="schoolSavedContainer">
                     <div class="top">
-                        <img class="icon hoverEffect" src="Images/bookmark_open.png">
+                        <img class="icon hoverEffect" src="Images/bookmark_open.png" onclick="toggleBookmark(this)">
                         <h3>Yale</h3>
                         <button onclick="view(this.parentNode.children[1].innerHTML)">View</button>
                     </div>
@@ -46,7 +52,7 @@
         
                 <div class="schoolSavedContainer">
                     <div class="top">
-                        <img class="icon hoverEffect" src="Images/bookmark_open.png">
+                        <img class="icon hoverEffect" src="Images/bookmark_open.png" onclick="toggleBookmark(this)">
                         <h3>St. John's University</h3>
                         <button onclick="view(this.parentNode.children[1].innerHTML)">View</button>
                     </div>
@@ -186,5 +192,6 @@
     </div>
 
     <script src="manageSavedSchoolsScript.js"></script>
+    <script src="searchResultsScript.js"></script>
 </body>
 </html>

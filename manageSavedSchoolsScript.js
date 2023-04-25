@@ -3,7 +3,7 @@ document.body.addEventListener("onload", init());
 let detailsIsEmpty = true;
 
 function init() {
-    let ref = document.getElementById("container").children[2].children[1];
+    let ref = document.getElementsByClassName("detailedSchoolView")[0];
 
     for(let i = 1; i < ref.children.length; i++) {
         ref.children[i].style.display = "none";
@@ -12,8 +12,8 @@ function init() {
 
 function view(name) {
     if(detailsIsEmpty) {
-        let ref = document.getElementById("container").children[2].children[1];
-            
+        let ref = document.getElementsByClassName("detailedSchoolView")[0];
+        
         ref.children[0].style.display = "none";
         
         for(let i = 1; i < ref.children.length; i++) {

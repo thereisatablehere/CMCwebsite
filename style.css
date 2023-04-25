@@ -48,6 +48,7 @@ h1 {
     font-size: 35px;
     margin-top: 50px;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 h3 {
     margin: 0;
@@ -69,7 +70,7 @@ h3 {
     border-radius: 10px;
 }
 .topInfo { 
-    max-width: 1000px;
+    max-width: 700px;
     margin: 0;
     margin-top: -10px;
     margin-bottom: 20px;
@@ -326,6 +327,31 @@ option {
     font-weight: bold;
     visibility: hidden;
     position: absolute;
+}
+
+/* search results */
+
+.backButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 160px;
+    height: 28px;
+    padding: 5px;
+    justify-content: space-evenly;
+    outline: none;
+    border: none;
+    border-radius: var(--defaultRadius);
+    background-color: var(--thirdColor);
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+.backButtonContainer .icon {
+    filter: contrast(50%);
+}
+.backButtonContainer:hover {
+    background-color: var(--fourthColor);
+    cursor: pointer;
 }
 
 /* login */

@@ -197,6 +197,8 @@ function highlightInvalids() {
         });
     }
     else {
+        // back end: save user input stuff
+        
         window.open("searchResults.html", "_self");
     }
 
