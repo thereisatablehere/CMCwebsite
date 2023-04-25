@@ -1,8 +1,7 @@
--view results
--view school
--login
-    ADM-manage universities
-    ADM-manage users
+-View results
+-Admin manage universities(have add a new university on the same page)
+-Admin manage users (have add a new user on the same page)
+-Add comments throughout code where JSP stuff should be implemented
 -Make search page buttons look better
 -Make navbar popup look better
 -Make sure entire website is consistent
