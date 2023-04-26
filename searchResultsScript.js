@@ -20,3 +20,297 @@ function backToSearch() {
 
     window.open("search.html", "_self");
 }
+
+function getValue(element, value) {
+    return window.getComputedStyle(element).getPropertyValue(value);
+}
+
+const detailView = `
+<div class="detailedSchoolView">
+<div>
+    <p>School</p>
+    <div class="detailedSchoolViewData">
+        <p>Yale</p>
+    </div>
+</div>
+
+<div>
+    <p>State</p>
+    <div class="detailedSchoolViewData">
+        <p>Connecticuta</p>
+    </div>
+</div>
+
+<div>
+    <p>Location</p>
+    <div class="detailedSchoolViewData">
+        <p>Small-City</p>
+    </div>
+</div>
+
+<div>
+    <p>Control</p>
+    <div class="detailedSchoolViewData">
+        <p>Private</p>
+    </div>
+</div>
+
+<div>
+    <p>Number of Students</p>
+    <div class="detailedSchoolViewData">
+        <p>10,000</p>
+    </div>
+</div>
+
+<div>
+    <p>% Female</p>
+    <div class="detailedSchoolViewData">
+        <p>45</p>
+    </div>
+</div>
+
+<div>
+    <p>SAT Verbal</p>
+    <div class="detailedSchoolViewData">
+        <p>675</p>
+    </div>
+</div>
+
+<div>
+    <p>SAT Math</p>
+    <div class="detailedSchoolViewData">
+        <p>675</p>
+    </div>
+</div>
+
+<div>
+    <p>Expenses</p>
+    <div class="detailedSchoolViewData">
+        <p>$33,014</p>
+    </div>
+</div>
+
+<div>
+    <p>% Financial Aid</p>
+    <div class="detailedSchoolViewData">
+        <p>40</p>
+    </div>
+</div>
+
+<div>
+    <p>Number of Applicants</p>
+    <div class="detailedSchoolViewData">
+        <p>11,500</p>
+    </div>
+</div>
+
+<div>
+    <p>% Admitted</p>
+    <div class="detailedSchoolViewData">
+        <p>20</p>
+    </div>
+</div>
+
+<div>
+    <p>% Enrolled</p>
+    <div class="detailedSchoolViewData">
+        <p>60</p>
+    </div>
+</div>
+
+<div>
+    <p>Academics Scale</p>
+    <div class="detailedSchoolViewData">
+        <p>5</p>
+    </div>
+</div>
+
+<div>
+    <p>Social Scale</p>
+    <div class="detailedSchoolViewData">
+        <p>3</p>
+    </div>
+</div>
+
+<div>
+    <p>Quality of Life Scale</p>
+    <div class="detailedSchoolViewData">
+        <p>4</p>
+    </div>
+</div>
+
+<div>
+    <p>Emphases</p>
+    <div class="detailedSchoolViewData emphasesData">
+        <p>Biology</p>
+        <p>English</p>
+        <p>History</p>
+        <p>Liberal Arts</p>
+        <p></p>
+    </div>
+</div>
+
+</div>
+`;
+
+const similarSaveButton = `
+<button class="similarSaveButton" onclick="toggleSimilarSave(this)">Save</button>
+`;
+
+const closeMoreSchools = `
+<img class="icon hoverEffect closeMoreSchool" src="Images/close.png">
+`;
+
+let move = {
+    ref: document.body, 
+    secondRef: document.body, 
+    startMargin: 0, 
+    secondStartMargin: 0, 
+    margin: 0, 
+    secondMargin: 0,
+    fps: Math.floor(1000 / 60), 
+    speed: 100, 
+    init: function() {
+        this.ref = document.getElementsByClassName("leftRightContainer")[0];
+        this.startMargin = parseFloat(getValue(this.ref, "margin-left").split("px")[0]);
+        this.margin = this.startMargin;
+
+        this.secondRef = document.getElementsByClassName("detailedSchoolView")[0];
+        this.secondStartMargin = parseFloat(getValue(this.secondRef, "margin-left").split("px")[0]);
+        this.secondMargin = parseFloat(getValue(this.secondRef, "margin-left").split("px")[0]);
+    }, 
+    play: function() {
+        if(move.margin == move.startMargin) {
+            move.init();
+            
+            let ref = document.getElementsByClassName("moreSchools")[0];
+
+            ref.style.backgroundColor = "var(--fourthColor)";
+        }
+
+        
+        
+        move.ref.style.marginLeft = move.margin + "px";
+        move.margin -= move.speed;
+        
+        if(move.secondMargin > 10) {
+            move.secondRef.style.marginLeft = move.secondMargin + "px";
+            move.secondMargin -= 10;
+        }
+
+        if(move.margin >= 0 - (move.startMargin / 8)) {
+            window.setTimeout(move.play, move.fps)
+        }
+        else {
+            let elements = document.getElementsByClassName("top");
+            for(let i = 0; i < elements.length; i++) {
+                elements[i].style.justifyContent = "flex-end";
+
+                elements[i].children[0].style.order = 2;
+                elements[i].children[1].style.order = 1;
+                elements[i].children[2].style.order = 3;
+            }
+
+            move.swing();
+        }
+    }, 
+    swing: function() {
+        this.ref = document.getElementsByClassName("moreSchools")[0];
+        let ref = this.ref;
+
+        ref.removeAttribute("onclick");
+        ref.classList.remove("moreSchoolsHover");
+        ref.classList.add("moreSchoolsSecondForm");
+        // ref.innerHTML = "<p style='border-bottom: 1px solid var(--mainColor)'><strong>Similar Schools</strong></p>";
+        ref.innerHTML = "<p><strong>Similar Schools</strong></p>";
+
+        let duration = 0.25;
+        ref.style.animationDuration = duration + "s";
+        ref.style.animationName = "moreSchoolsTransition"
+
+        window.setTimeout(this.addContent, (duration * 1000));
+    }, 
+    addContent: function() {
+        for(let i = 0; i < 5; i++) {
+            move.ref.innerHTML += similarSaveButton;
+            
+            // back end: get and add the similar schools here
+            move.ref.innerHTML += detailView;
+        }
+
+        let element = document.createElement("img");
+        element.setAttribute("src", "Images/close.png");
+        element.classList.add("icon");
+        element.classList.add("hoverEffect");
+        element.classList.add("closeMoreSchools");
+        element.setAttribute("onclick", "move.reversePlay()");
+        
+        let before = move.ref.children[0];
+
+        move.ref.insertBefore(element, before);
+    }, 
+    reversePlay: function() {
+        this.ref = document.getElementsByClassName("moreSchools")[0];
+        let ref = this.ref;
+        
+        move.ref.innerHTML = "you might also like <em>(click me)</em>";
+        ref.classList.remove("moreSchoolsSecondForm");
+        ref.classList.add("moreSchools");
+
+        let duration = 0.25;
+        ref.style.animationDuration = duration + "s";
+        ref.style.animationName = "moreSchoolsReverseTransition";
+        
+        move.ref = document.getElementsByClassName("leftRightContainer")[0];
+        
+        window.setTimeout(this.reversePlay2(), (duration * 1000));
+    }, 
+    reversePlay2: function() {
+        move.ref.style.marginLeft = move.margin + "px";
+        move.margin += move.speed;
+        
+        if(move.secondMargin < move.secondStartMargin) {
+            move.secondRef.style.marginLeft = move.secondMargin + "px";
+            move.secondMargin += 10;
+        }
+
+        if(move.margin < move.startMargin) {
+            window.setTimeout(move.reversePlay2, move.fps);
+        }
+        else {
+            let ref = document.getElementsByClassName("moreSchools")[0];
+
+            ref.style.backgroundColor = "var(--accentColor)";
+
+            let elements = document.getElementsByClassName("top");
+            
+            for(let i = 0; i < elements.length; i++) {
+                elements[i].style.justifyContent = "flex-start";
+
+                elements[i].children[1].style.order = 2;
+                elements[i].children[0].style.order = 1;
+                elements[i].children[2].style.order = 3;
+            }
+
+            ref.classList.add("moreSchoolsHover");
+            ref.setAttribute("onclick", "showMoreSchools()");
+        }
+    }
+}
+
+function showMoreSchools() {
+    move.play();
+}
+
+function toggleSimilarSave(element) {
+    if(element.innerHTML.toLowerCase() == "save") {
+        // back end: save school
+        element.innerHTML = "unsave";
+        element.style.backgroundColor = "var(--thirdColor)";
+    }
+    else {
+        // back end: remove saved school
+        element.innerHTML = "save";
+        element.style.backgroundColor = "var(--accentColor)";
+    }
+}

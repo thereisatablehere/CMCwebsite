@@ -5,16 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Anuphan&display=swap');
 
 :root {
-    --sidesIndent: 10px;
-    --defaultRadius: 5px;
-    --smallDefaultRadius: 3px;
-    --defaultContainerWidth: 350px;
     --mainColor: #17202A;
     --secondaryColor: #5D6D7E;
     --thirdColor: #BDC3C7;
     --fourthColor: #D7DBDD;
     /* alternate color scheme with blue as accent color 
-
+    
     --accentColor: #85C1E9;
     --accentColorDarker: #5DADE2;
     --accentColorLighter: #AED6F1;
@@ -23,6 +19,12 @@
     --accentColorDarker: #48C9B0;
     --accentColorLighter: #A3E4D7;
     --errorColor: #EF5350;
+    --sidesIndent: 10px;
+    --defaultRadius: 5px;
+    --smallDefaultRadius: 3px;
+    --defaultContainerWidth: 350px;
+    --detaileViewWidth: 450px;
+    --deatailViewHeight: 650px;
 }
 
 
@@ -353,6 +355,102 @@ option {
     background-color: var(--fourthColor);
     cursor: pointer;
 }
+.moreSchools {
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+    height: fit-content;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: var(--defaultRadius);
+    background-color: var(--accentColor);
+    text-transform: uppercase;
+    /* font-weight: bold; */
+    padding-left: 30px;
+    font-size: 20px;
+    width: calc(var(--deatailViewHeight) - 40px);
+    margin-left: 60px;
+    margin-right: -60px;
+}
+.moreSchoolsHover:hover {
+    background-color: var(--accentColorLighter);
+    cursor: pointer;
+}
+.moreSchoolsSecondForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    margin-right: -20px;
+
+    animation-fill-mode: both;
+}
+@keyframes moreSchoolsTransition {
+    from {
+        transform: rotate(90deg);
+        width: var(--detaileViewWidth);
+        margin-left: 60px;
+        margin-right: -60px;
+    }
+    to {
+        transform: rotate(0deg);
+        width: calc((var(--detaileViewWidth) - 20px) * 1);
+        margin-left: 10px;
+        margin-right: -10px;
+    }
+}
+.moreSchoolsSecondForm .detailedSchoolView {
+    width: 95%;
+    height: calc(var(--deatailViewHeight) / 2);
+    margin: 0;
+    margin-bottom: 15px;
+    box-shadow: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 17px;
+}
+.moreSchoolsSecondForm .detailedSchoolView::-webkit-scrollbar {
+    width: 7px;
+}
+.moreSchoolsSecondForm .detailedSchoolView div {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+.similarSaveButton {
+    outline: none;
+    border: none;
+    width: 97%;
+    text-transform: uppercase;
+    background-color: var(--accentColor);
+    border-radius: var(--defaultRadius);
+    padding: 3px;
+}
+.similarSaveButton:hover {
+    background-color: var(--accentColorLighter);
+    cursor: pointer;
+}
+.closeMoreSchools {
+    position: absolute;
+    margin-left: 395px;
+    margin-top: 2px;
+}
+@keyframes moreSchoolsReverseTransition {
+    from {
+        transform: rotate(0deg);
+        width: calc((var(--detaileViewWidth) - 20px) * 1);
+        margin-left: 10px;
+        margin-right: -10px;
+    }
+    to {
+        transform: rotate(90deg);
+        width: calc(var(--detaileViewWidth) + 200px);
+        margin-left: 60px;
+        margin-right: -60px;
+    }
+}
 
 /* login */
 
@@ -381,7 +479,7 @@ option {
     border: 2px solid var(--secondaryColor);
 }
 #loginForm .submit {
-    border: none;   
+    border: none;
     background-color: var(--accentColor);
     width: 100%;
 }
@@ -512,8 +610,8 @@ option {
     border-radius: var(--defaultRadius);
     padding-left: 15px;
     padding-right: 15px;
-    width: 450px;
-    height: 650px;
+    width: var(--detaileViewWidth);
+    height: var(--deatailViewHeight);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

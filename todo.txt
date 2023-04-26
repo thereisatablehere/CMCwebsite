@@ -1,8 +1,9 @@
--View results
+-Fix when closing similar schools not reseting things properly
+-Don't allow search to go through if no parameters added
 -Admin manage universities(have add a new university on the same page)
 -Admin manage users (have add a new user on the same page)
 -Add comments throughout code where JSP stuff should be implemented
+-CSS animations on interactions (like button hover and input border)
 -Make search page buttons look better
 -Make navbar popup look better
 -Make sure entire website is consistent
--fancy animations

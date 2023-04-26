@@ -22,6 +22,11 @@ function view(name) {
         
         detailsIsEmpty = false;
     }
+
+    window.scrollTo({
+        top: 0, 
+        behavior: "smooth"
+    });
 }
 
 function remove(element) {
