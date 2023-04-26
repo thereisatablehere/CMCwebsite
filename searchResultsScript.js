@@ -233,6 +233,24 @@ let move = {
     addContent: function() {
         for(let i = 0; i < 5; i++) {
             move.ref.innerHTML += similarSaveButton;
+
+            if(similarSaves.length < 5) {
+                move.ref.children[move.ref.children.length - 1]
+                similarSaves.push(move.ref.children[move.ref.children.length - 1]);
+                move.ref.children[move.ref.children.length - 1].classList.add("save");
+            }
+            else {
+                let element = similarSaves[i];
+                let ref = move.ref.children[move.ref.children.length - 1];
+ 
+                if(element.innerHTML.toLowerCase() == "save") {
+                    ref.classList.add("save");
+                }
+                else {
+                    ref.innerHTML = "unsave";
+                    ref.classList.add("unsave");
+                }
+            }
             
             // back end: get and add the similar schools here
             move.ref.innerHTML += detailView;
@@ -263,7 +281,7 @@ let move = {
         
         move.ref = document.getElementsByClassName("leftRightContainer")[0];
         
-        window.setTimeout(this.reversePlay2(), (duration * 1000));
+        window.setTimeout(this.reversePlay2, (duration * 1000));
     }, 
     reversePlay2: function() {
         move.ref.style.marginLeft = move.margin + "px";
@@ -274,10 +292,14 @@ let move = {
             move.secondMargin += 10;
         }
 
+        let goal = 0.25 * window.innerWidth;
         if(move.margin < move.startMargin) {
             window.setTimeout(move.reversePlay2, move.fps);
         }
         else {
+            move.ref.style.marginLeft = "25%";
+            move.secondRef.style.marginLeft = "75px";
+
             let ref = document.getElementsByClassName("moreSchools")[0];
 
             ref.style.backgroundColor = "var(--accentColor)";
@@ -292,6 +314,8 @@ let move = {
                 elements[i].children[2].style.order = 3;
             }
 
+            ref.classList.remove("moreSchools");
+            ref.classList.add("moreSchools");
             ref.classList.add("moreSchoolsHover");
             ref.setAttribute("onclick", "showMoreSchools()");
         }
@@ -302,15 +326,29 @@ function showMoreSchools() {
     move.play();
 }
 
+let similarSaves = [];
+
 function toggleSimilarSave(element) {
+    let ref = document.getElementsByClassName("moreSchools")[0];
+    let refChildren = Array.from(ref.children);
+    let i = (refChildren.indexOf(element) / 2) - 1;
+
     if(element.innerHTML.toLowerCase() == "save") {
         // back end: save school
+
+        element.classList.remove("save");
+        element.classList.add("unsave");
+
         element.innerHTML = "unsave";
-        element.style.backgroundColor = "var(--thirdColor)";
     }
     else {
         // back end: remove saved school
+
+        element.classList.add("save");
+        element.classList.remove("unsave");
+
         element.innerHTML = "save";
-        element.style.backgroundColor = "var(--accentColor)";
     }
+    
+    similarSaves[i] = element;
 }

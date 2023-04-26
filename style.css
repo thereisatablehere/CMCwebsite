@@ -424,12 +424,21 @@ option {
     border: none;
     width: 97%;
     text-transform: uppercase;
-    background-color: var(--accentColor);
     border-radius: var(--defaultRadius);
     padding: 3px;
 }
-.similarSaveButton:hover {
+.save{
+    background-color: var(--accentColor);
+}
+.unsave{
+    background-color: var(--thirdColor);
+}
+.save:hover {
     background-color: var(--accentColorLighter);
+    cursor: pointer;
+}
+.unsave:hover {
+    background-color: var(--fourthColor);
     cursor: pointer;
 }
 .closeMoreSchools {
