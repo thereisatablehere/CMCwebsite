@@ -28,7 +28,7 @@ const navbarContent = `
 
 let popup = {
     ref: null, 
-    userType: 1,// guest, regular user, admin 
+    userType: 2,// guest, regular user, admin 
     content: [
         // guest
         [
@@ -58,7 +58,7 @@ let popup = {
         // admin
         [
             {
-                href: "index.html", 
+                href: "manageUniversities.html", 
                 text: "Manage Universities"
             }, 
             {
