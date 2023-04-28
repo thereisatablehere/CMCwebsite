@@ -677,12 +677,12 @@ option {
 .universitiesContainer {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     align-self: flex-start;
-    justify-content: space-evenly;
-    margin-top: 20px;
+    margin-right: 10px;
     width: 100%;
-    height: fit-content;
     overflow: scroll;
+    padding-left: 4px;
     /* background-color: orchid; */
 }
 .universitiesContainer .column {
@@ -692,10 +692,12 @@ option {
 }
 .universitiesContainer .column div {
     /* background-color: greenyellow; */
-    width: 95%;
-    padding-right: 10px;
+    width: 90%;
+    padding-right: 10%;
     border-bottom: 1px solid var(--fourthColor);
-    border-radius: var(--defaultRadius);
+}
+.universitiesContainer .column:last-child {
+    padding-right: 0;
 }
 .universitiesContainer .column .columnName {
     /* background-color: royalblue; */
@@ -704,17 +706,20 @@ option {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 10%;
     background-color: var(--fourthColor);
-    padding-left: 7px;
-    height: 70px;
     text-transform: uppercase;
+    border-radius: var(--defaultRadius);
+    padding-left: 7px;
+    padding-bottom: 8%;
+    padding-top: 10%;
+    height: 50px;
+    font-size: 18px;
 }
 .universitiesContainer .column textarea {
     /* background-color: orchid; */
     margin: 0;
     padding: 0;
-    height: 70px;
+    height: 50px;
     padding-left: 7px;
     padding-top: 10px;
     margin-top: 5px;
@@ -760,4 +765,20 @@ option {
 }
 .universitiesContainer .column textarea::-webkit-scrollbar-thumb:hover {
     background-color: #a6acaf;
+}
+.addUniversityButton {
+    outline: none;
+    border: none;
+    background-color: var(--accentColor);
+    border-radius: 10px;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 8px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 2px;
+}
+.addUniversityButton:hover {
+    cursor: pointer;
+    background-color: var(--accentColorLighter);
 }

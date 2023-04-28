@@ -1,42 +1,46 @@
-let inputValues = [];
-let inputValuesOnFocus = [];
+let inputValue = "";
+let inputValueOnFocus = "";
+let ref;
+
+function getValue(element, value) {
+    return window.getComputedStyle(element).getPropertyValue(value);
+}
+
+function addTextareaEventListeners(element) {
+    element.addEventListener("input", function() {
+        getInput(this.value);
+    });
+
+    element.addEventListener("keydown", clearFocus);
+    
+    element.addEventListener("focusout", function() {
+        checkIfUpdate(this);
+    });
+
+    element.addEventListener("focus", function() {
+        setOnFocusValue(this.value);
+    });
+}
 
 function init() {
-    let ref = document.getElementsByClassName("universitiesContainer")[0];
+    ref = document.getElementsByClassName("universitiesContainer")[0];
     
     let textareas = ref.getElementsByTagName("textarea");
     for(let i = 0; i < textareas.length; i++) {
-        textareas[i].addEventListener("input", function() {
-            getInput(this.value ,i);
-        });
-
-        textareas[i].addEventListener("keydown", clearFocus);
-
-        textareas[i].addEventListener("focusout", function() {
-            checkIfUpdate(this.value ,i);
-        });
-
-        textareas[i].addEventListener("focus", function() {
-            setOnFocusValue(this.value ,i);
-        });
-        
-        inputValues.push(textareas[i].innerHTML);
-        inputValuesOnFocus.push(textareas[i].innerHTML);
+        addTextareaEventListeners(textareas[i]);
     }
     
 }
 
-let lastIndex = -1;
-
-function getInput(value, index) {
-    if(value.length > 0) {
-        inputValues[index] = value;
+function getInput(value) {
+    if(!(value === undefined) &&value.length > 0) {
+        inputValue = value;
     }
 }
 
-function checkIfUpdate(value, index) {
-    if(value.length < 1) {
-        document.getElementsByClassName("universitiesContainer")[0].getElementsByTagName("textarea")[index].value = inputValues[index];
+function checkIfUpdate(element) {
+    if(!(element.value === undefined) && element.value.length < 1) {
+        element.value = inputValue;
     }
 }
 
@@ -47,16 +51,49 @@ function clearFocus(e) {
         element.blur();
 
         if(e.code == "Escape") {
-            element.value = inputValuesOnFocus[lastIndex];
+            element.value = inputValueOnFocus;
         }
-
     }
 }
 
-function setOnFocusValue(value, index) {
-    inputValuesOnFocus[index] = value;
+function checkIfSortNewUniversity(element) {
+    let unique = false;
 
-    lastIndex = index;
+    // back end: check if school name is unique
+    if(element.value.length > 0 && unique) {
+        // sort here
+
+        console.log("sorted");
+    }
+    else {
+        element.addEventListener("focusout", function() {
+            checkIfSortNewUniversity(this);
+        }, {once: true});
+    }
+}
+
+function setOnFocusValue(value) {
+    if(!(value === undefined)) {
+        inputValueOnFocus = value;
+    }
+}
+
+function addUniversity() {
+    for(let i = 0; i < ref.children.length; i++) {
+        let element = document.createElement("div");
+        let textarea = document.createElement("textarea");
+        element.appendChild(textarea);
+        
+        ref.children[i].insertBefore(element, ref.children[i].children[1]);
+
+        addTextareaEventListeners(textarea);
+
+        if(i === 0) {
+            textarea.addEventListener("focusout", function() {
+                checkIfSortNewUniversity(this);
+            }, {once: true});
+        }
+    }
 }
 
 document.body.addEventListener("onload", init());

@@ -6,11 +6,19 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
+
     <style>
         body {
-            overflow-x: scroll;
+            overflow: hidden;
+            overflow-y: hidden;
+            height: 100%;
         }
-        body::-webkit-scrollbar {
+        #container {
+            overflow: hidden;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        #container::-webkit-scrollbar {
             display: none;
         }
     </style>
@@ -23,12 +31,13 @@
 
     <div id="container">
         <h1>Manage Universities</h1>
-        <p class="topInfo">Here you can view, and and edit, the information any of the universitites currently saved in the database. To edit a university, simply click on the piece of information you want to edit. To confirm your changes press enter or click off of the input, and to cancel your changes hit escape.</p>
+        <p class="topInfo">Here you can view, edit, and add onto the information any of the universitites currently saved in the database. To edit a university, simply click on the piece of information you want to edit. To confirm your changes press enter or click off of the input, and to cancel your changes hit escape. Note that when adding a new university, after you confirm the school name it will automatically get placed in the correct alphabetical position</p>
+        
+        <button class="addUniversityButton" onclick="addUniversity()">Add a new University</button>
 
         <div class="universitiesContainer">
             <div class="column">
-                <div class="columnName">School</div>
-
+                <div class="columnName"><p>School</p></div>
                 <div><textarea>Abilene Christian University</textarea></div>
                 <div><textarea>Adelphi</textarea></div>
                 <div><textarea>American University of Beirut</textarea></div>
@@ -42,8 +51,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">School</div>
-                
+                <div class="columnName"><p>State</p></div>
                 <div><textarea>Texas</textarea></div>
                 <div><textarea>New York</textarea></div>
                 <div><textarea>Foreign</textarea></div>
@@ -57,8 +65,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">Location</div>
-
+                <div class="columnName"><p>Location</p></div>
                 <div><textarea>Suburban</textarea></div>
                 <div><textarea>-1</textarea></div>
                 <div><textarea>Urban</textarea></div>
@@ -72,8 +79,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">Control</div>
-
+                <div class="columnName"><p>Control</p></div>
                 <div><textarea>Private</textarea></div>
                 <div><textarea>Private</textarea></div>
                 <div><textarea>Private</textarea></div>
@@ -87,8 +93,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName"># of Students</div>
-
+                <div class="columnName"><p># of Students</p></div>
                 <div><textarea>10,000</textarea></div>
                 <div><textarea>15,000</textarea></div>
                 <div><textarea>10,000</textarea></div>
@@ -102,8 +107,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">% Females</div>
-
+                <div class="columnName"><p>% Female</p></div>
                 <div><textarea>50%</textarea></div>
                 <div><textarea>70%</textarea></div>
                 <div><textarea>40%</textarea></div>
@@ -117,8 +121,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">SAT Verbal</div>
-
+                <div class="columnName"><p>SAT Verbal</p></div>
                 <div><textarea>-1</textarea></div>
                 <div><textarea>500</textarea></div>
                 <div><textarea>-1</textarea></div>
@@ -132,8 +135,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">SAT Math</div>
-
+                <div class="columnName"><p>SAT Math</p></div>
                 <div><textarea>-1</textarea></div>
                 <div><textarea>475</textarea></div>
                 <div><textarea>-1</textarea></div>
@@ -147,8 +149,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">Expenses</div>
-
+                <div class="columnName"><p>Expenses</p></div>
                 <div><textarea>$12,068</textarea></div>
                 <div><textarea>$37,437</textarea></div>
                 <div><textarea>$16,403</textarea></div>
@@ -162,8 +163,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">% with Financial Aid</div>
-
+                <div class="columnName"><p>% with Financial Aid</p></div>
                 <div><textarea>70%</textarea></div>
                 <div><textarea>60%</textarea></div>
                 <div><textarea>20%</textarea></div>
@@ -177,8 +177,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName"># of Applicants</div>
-
+                <div class="columnName"><p># of Applicants</p></div>
                 <div><textarea>4,000</textarea></div>
                 <div><textarea>5,500</textarea></div>
                 <div><textarea>5,500</textarea></div>
@@ -192,8 +191,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">% Admitted</div>
-
+                <div class="columnName"><p>% Admitted</p></div>
                 <div><textarea>90%</textarea></div>
                 <div><textarea>70%</textarea></div>
                 <div><textarea>50%</textarea></div>
@@ -207,8 +205,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">% Enrolled</div>
-
+                <div class="columnName"><p>% Enrolled</p></div>
                 <div><textarea>80%</textarea></div>
                 <div><textarea>40%</textarea></div>
                 <div><textarea>80%</textarea></div>
@@ -222,8 +219,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">Academics Scale (1-5)</div>
-
+                <div class="columnName"><p>Academics Scale (1 - 5)</p></div>
                 <div><textarea>2</textarea></div>
                 <div><textarea>2</textarea></div>
                 <div><textarea>3</textarea></div>
@@ -237,8 +233,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">Social Scale (1-5)</div>
-
+                <div class="columnName"><p>Social Scale (1 - 5)</p></div>
                 <div><textarea>3</textarea></div>
                 <div><textarea>2</textarea></div>
                 <div><textarea>3</textarea></div>
@@ -252,8 +247,7 @@
             </div>
 
             <div class="column">
-                <div class="columnName">Quality of Life Scale (1-5)</div>
-
+                <div class="columnName"><p>Quality of Life Scale (1 - 5)</p></div>
                 <div><textarea>3</textarea></div>
                 <div><textarea>2</textarea></div>
                 <div><textarea>3</textarea></div>
