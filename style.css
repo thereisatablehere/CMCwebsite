@@ -932,3 +932,12 @@ option {
 .universitiesContainer .column .disabledTextarea {
     visibility: hidden;
 }
+.universitiesContainer .column .disabledTextareaButShown:hover {
+    cursor: text;
+    background-color: transparent;
+}
+.universitiesContainer .column .disabledTextareaButShown:focus {
+    cursor: text;
+    background-color: transparent;
+    border: 2px solid transparent;
+}
