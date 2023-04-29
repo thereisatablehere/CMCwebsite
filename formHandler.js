@@ -199,7 +199,9 @@ function highlightInvalids() {
     else {
         // back end: save user input stuff
         
-        window.open("searchResults.html", "_self");
+        if(document.getElementById("container").children[3].children.length > 2) {
+            window.open("searchResults.html", "_self");
+        }
     }
 
 }
