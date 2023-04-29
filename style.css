@@ -22,7 +22,7 @@
     --errorColorLighter: #E57373;
     --errorColorDarker: #F44336;
     --sidesIndent: 10px;
-    --defaultRadius: 5px;
+    --defaultRadius: 7px;
     --smallDefaultRadius: 3px;
     --defaultContainerWidth: 350px;
     --detaileViewWidth: 450px;
@@ -85,6 +85,15 @@ h3 {
     margin-top: 10px;
 }
 
+/* animation */
+
+button, div {
+    transition-duration: 0.5s;
+}
+input {
+    transition-duration: 0.25s;
+}
+
 /* navbar */
 
 #topLeft a {
@@ -136,23 +145,41 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 0;
-    height: 200px;
+    height: 100vh;
     padding-top: 7px;
-    background-color: #a3aeb9;
+    /* background-color: #a3aeb9; */
+    background-color: var(--mainColor);
     border-radius: var(--defaultRadius);
     /* background-color: var(--accentColorDarker); */
     visibility: hidden;
+    box-shadow: 2px 2px 10px black;
 
     animation-fill-mode: both;
     animation-duration: 0.4s;
 }
 @keyframes openAccountPopup {
-    from {width: 0; visibility: visible; opacity: 0;}
-    to {width: 350px; visibility: visible; opacity: 1;}
+    from {
+        width: 0;
+        visibility: visible;
+        opacity: 0;
+    }
+    to {
+        width: 300px;
+        visibility: visible;
+        opacity: 1;
+    }
 }
 @keyframes closeAccountPopup {
-    from {width: 350px; visibility: visible; opacity: 1}
-    to {width: 0; visibility: hidden; opacity: 0}
+    from {
+        width: 300px;
+        visibility: visible;
+        opacity: 1;
+    }
+    to {
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 #accountPopup .closePopup {
     display: flex;
@@ -167,28 +194,42 @@ h3 {
     margin-bottom: -100%;
     margin-top: -2px;
     z-index: 1;
+    filter: invert(0.8);
+}
+#accountPopup .closePopup img:hover {
+    cursor: pointer;
+    background-color: var(--accentColorDarker);
+    border-radius: 10px;
 }
 #accountPopup #accountPopupContent {
     display: flex;
     flex-direction: column;
-    width: 270px;
     margin-left: 15px;
+    padding-top: 5px;
+    width: 300px;
+    overflow-x: hidden;
 }
 #accountPopup #accountPopupContent a {
     font-family: Anuphan;
-    color: black;
+    color: var(--fourthColor);
     text-decoration: none;
     font-size: 20px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-right: 15px;
-    border-top: 1px solid var(--mainColor);
     outline: none;
-}
-#accountPopup #accountPopupContent a:nth-child(1) {
-    border: none;
+    /* background-color: red; */
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+    border-radius: 20px;
+
+    transition-duration: 0.25s;
 }
 #accountPopup #accountPopupContent a:hover {
-    filter: contrast(50%);
+    color: black;
+    background-color: var(--accentColor);
 }
 
 /* search page */
@@ -226,9 +267,9 @@ h3 {
     padding-left: 5px;
     outline: none;
     border: none;
-    border-bottom: 1px solid var(--thirdColor);
+    /* border-bottom: 1px solid var(--secondaryColor); */
     border-radius: var(--smallDefaultRadius);
-    background-color: white;
+    background-color: #EAECEE;
 }
 #searchParametersContainer div select:hover {
     cursor: pointer;
@@ -252,7 +293,9 @@ option {
     display: inline-block;
 }
 #searchParametersContainer .tooltipContainer:hover .tooltipText {
-    visibility: visible;
+    animation: animateTooltip 0.7s;
+    animation-fill-mode: forwards;
+
 }
 #searchParametersContainer .tooltipText {
     width: fit-content;
@@ -266,8 +309,22 @@ option {
     background-color: var(--thirdColor);
     border-radius: var(--defaultRadius);
     font-size: 14px;
-    visibility: hidden;
     font-weight: bold;
+    visibility: hidden;
+    opacity: 0;
+}
+@keyframes animateTooltip {
+    0% {
+        visibility: visible;
+        opacity: 0;
+        margin-top: -10px;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+        margin-top: -25px;
+        margin-left: -25px;
+    }
 }
 #searchParametersContainer div input {
     width: 75px;
@@ -375,6 +432,12 @@ option {
     width: calc(var(--deatailViewHeight) - 40px);
     margin-left: 60px;
     margin-right: -60px;
+}
+.moreSchoolsGreenBackground {
+    background-color: var(--accentColor);
+}
+.moreSchoolsGreyBackground {
+    background-color: var(--fourthColor);
 }
 .moreSchoolsHover:hover {
     background-color: var(--accentColorLighter);
@@ -527,6 +590,8 @@ option {
     border-radius: var(--defaultRadius);
     width: 200px;
     background-color: transparent;
+    border: 2px solid transparent;
+    transition-duration: 0.5s;
 }
 .profileInfoContainer input:focus {
     border: 2px solid var(--accentColor);
@@ -538,7 +603,7 @@ option {
 }
 .profileInfoContainer .right .icon {
     position: absolute;
-    margin-left: 215px;
+    margin-left: 220px;
 }
 .profileInfoContainer .verticalRight {
     display: flex;
@@ -555,7 +620,7 @@ option {
     cursor: default;
 }
 
-/* mange saved schools */
+/* manage saved schools */
 
 .schoolSavedContainer {
     display: flex;
@@ -591,6 +656,7 @@ option {
     padding-bottom: 5px;
     background-color: var(--fourthColor);
     font-weight: normal;
+    transition-duration: 0.25s;
 }
 .schoolSavedContainer div button:hover {
     outline: none;
@@ -631,6 +697,7 @@ option {
     margin-left: 75px;
     overflow-y: scroll;
     box-shadow: 2px 2px 10px var(--thirdColor);
+    transition: none;
 }
 .detailedSchoolView::-webkit-scrollbar {
     background-color: transparent;
@@ -674,7 +741,7 @@ option {
     font-weight: normal;
 }
 
-/* mange universitites */
+/* manage universitites */
 
 .universitiesContainer {
     display: flex;
@@ -716,6 +783,8 @@ option {
 }
 .farLeft {
     border-radius: var(--defaultRadius) 0  0 var(--defaultRadius);
+    /* margin-left: -10px;
+    padding-left: 10px; */
 }
 .farRight {
     border-radius: 0 var(--defaultRadius) var(--defaultRadius) 0;
@@ -737,7 +806,9 @@ option {
     outline: none;
     border: none;
     background-color: transparent;
+    border: 2px solid transparent;
     border-radius: var(--defaultRadius);
+    transition-duration: 0.5s;
 }
 .textareaPassword {
     color: transparent;
@@ -759,19 +830,19 @@ option {
     cursor: text;
     background-color: white;
     border: 2px solid var(--accentColorLighter);
-    /* this margin stuff makes sure that when the border is applied it doesn't cause the other stuff in the table to move */
-    margin-bottom: -4px;
-    margin-left: -4px;
 }
 .deactivateUser {
     position: absolute;
     margin-left: -40px;
     margin-top: 12px;
+    border-radius: 20px;
+    width: 20px;
+    padding: 5px;
+    transition-duration: 0.25s;
 }
 .deactivateUser:hover {
     cursor: pointer;
     background-color: var(--errorColorLighter);
-    border-radius: 20px;
 }
 .universitiesContainer::-webkit-scrollbar {
     background-color: transparent;
@@ -811,4 +882,53 @@ option {
 .addUniversityButton:hover {
     cursor: pointer;
     background-color: var(--accentColorLighter);
+}
+
+/* manage users */
+.universitiesContainer .column .containerForUserType {
+    width: fit-content;
+    position: absolute;
+    border: none;
+    margin-top: 7px;
+}
+.universitiesContainer .userTypeContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    /* padding-right: 5px; */
+}
+/* .universitiesContainer .userTypeContainer:hover {
+    background-color: white;
+    border-radius: 10px;
+} */
+.universitiesContainer .userTypeContainer input {
+    visibility: hidden;
+    margin-right: 7px;
+}
+.universitiesContainer .userTypeContainer div {
+    /* border: 2px solid var(--mainColor); */
+    background-color: var(--thirdColor);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 5px;
+}
+.universitiesContainer .userTypeContainer:hover {
+    cursor: pointer;
+}
+.universitiesContainer .userTypeContainer:hover div {
+    filter: contrast(125%);
+}
+.universitiesContainer .userTypeContainer input {
+    visibility: hidden;
+    margin-right: 7px;
+}
+.universitiesContainer .userTypeContainer input:checked ~ div {
+    background-color: var(--accentColor);
+}
+.universitiesContainer .userTypeContainer:nth-child(2) input:checked ~ div {
+    background-color: var(--errorColor);
+}
+.universitiesContainer .column .disabledTextarea {
+    visibility: hidden;
 }

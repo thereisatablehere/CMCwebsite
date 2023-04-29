@@ -81,6 +81,53 @@ function init() {
 
             ref.readOnly = false;
             ref.style.backgroundColor = "white";
+
+            ref.addEventListener("input", function() {
+                getInput(this.value);
+            });
+        
+            ref.addEventListener("keydown", clearFocus);
+            
+            ref.addEventListener("focusout", function() {
+                checkIfUpdate(this);
+            });
+        
+            ref.addEventListener("focus", function() {
+                setOnFocusValue(this.value);
+            });
         }
+    }
+}
+
+let inputValue = "";
+let inputValueOnFocus = "";
+
+function getInput(value) {
+    if(!(value === undefined) &&value.length > 0) {
+        inputValue = value;
+    }
+}
+
+function checkIfUpdate(element) {
+    if(!(element.value === undefined) && element.value.length < 1) {
+        element.value = inputValue;
+    }
+}
+
+function clearFocus(e) {
+    if(e.code == "Enter" || e.code == "Escape") {
+        let element = document.activeElement;
+
+        element.blur();
+
+        if(e.code == "Escape") {
+            element.value = inputValueOnFocus;
+        }
+    }
+}
+
+function setOnFocusValue(value) {
+    if(!(value === undefined)) {
+        inputValueOnFocus = value;
     }
 }

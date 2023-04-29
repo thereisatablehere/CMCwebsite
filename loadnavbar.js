@@ -20,7 +20,7 @@ const navbarContent = `
 
 <div id="accountPopup">
     <div class="closePopup">
-        <img class="icon hoverEffect" onclick="closeAccountPopup()" src="Images/close.png">
+        <img class="icon" onclick="closeAccountPopup()" src="Images/close.png">
     </div>
     <div id="accountPopupContent"></div>
 </div>

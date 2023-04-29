@@ -185,7 +185,8 @@ let move = {
             
             let ref = document.getElementsByClassName("moreSchools")[0];
 
-            ref.style.backgroundColor = "var(--fourthColor)";
+            ref.classList.remove("moreSchoolsGreenBackground");
+            ref.classList.add("moreSchoolsGreyBackground");
         }
 
         
@@ -302,7 +303,8 @@ let move = {
 
             let ref = document.getElementsByClassName("moreSchools")[0];
 
-            ref.style.backgroundColor = "var(--accentColor)";
+            ref.classList.remove("moreSchoolsGreyBackground");
+            ref.classList.add("moreSchoolsGreenBackground");
 
             let elements = document.getElementsByClassName("top");
             

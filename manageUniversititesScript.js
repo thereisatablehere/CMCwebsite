@@ -96,20 +96,41 @@ function addUniversity(index) {
         let element = document.createElement("div");
         let textarea = document.body;
         
-        if(index == 2 && (i == 0 || i == 5)) {
+        if(index == 2 && (i == 0 || i == 4 || i == 5)) {
             if(i === 0) {
                 element.innerHTML = deactivateButtonContent;
             }
-            else if(i == 5) {
-                textarea = document.createElement("textarea");
+            else if(i == 4 || i == 5) {
+                // textarea = document.createElement("div");
 
-                textarea.value = "Y";
+                // textarea.value = "Y";
 
-                element.appendChild(textarea);
+                // element.appendChild(textarea);
+                element.innerHTML = `
+                <div class="containerForUserType">
+                        <label class="userTypeContainer">
+                            <input type="checkbox" value="u" checked="checked" onchange="onlyCheckOne(this)">
+                            <div class="check"></div>
+                            Y
+                        </label>
+                        
+                        <label class="userTypeContainer">
+                            <input type="checkbox" value="a" onchange="onlyCheckOne(this)">
+                            <div class="check"></div>
+                            N
+                        </label>
+                    </div>
+                    
+                    <textarea class="disabledTextarea"></textarea>
+                `;
             }
         }
         else {
             textarea = document.createElement("textarea");
+
+            if(i == 3) {
+                textarea.classList.add("textareaPassword");
+            }
 
             element.appendChild(textarea);
         }
