@@ -185,7 +185,7 @@ function addParameterSelection(first) {
     // add the option to add all parameters
     optionNode = document.createElement("option");
     optionNode.setAttribute("value", "add all");
-    optionNode.style.backgroundColor = "whitesmoke";
+    optionNode.style.backgroundColor = "var(--fourthColor)";
 
     if(first) {
         optionNode.innerHTML = "Add All Parameters";
