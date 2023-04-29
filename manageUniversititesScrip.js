@@ -24,6 +24,16 @@ function addTextareaEventListeners(element) {
 
 function init() {
     ref = document.getElementsByClassName("universitiesContainer")[0];
+
+    let bodyWidth = parseFloat(getValue(document.body, "width").split("px")[0]);
+    let bodyHeight = parseFloat(getValue(document.body, "height").split("px")[0]);
+
+    if(ref.scrollWidth > bodyWidth) {
+        ref.style.overflowX = "scroll";
+    }
+    if(ref.scrollHeight > bodyHeight) {
+        ref.style.overflowY = "scroll";
+    }
     
     let textareas = ref.getElementsByTagName("textarea");
     for(let i = 0; i < textareas.length; i++) {
@@ -59,9 +69,8 @@ function clearFocus(e) {
 function checkIfSortNewUniversity(element) {
     let unique = false;
 
-    // back end: check if school name is unique
+    // back end: check if school name or username is unique
     if(element.value.length > 0 && unique) {
-        // sort here
 
         console.log("sorted");
     }
@@ -78,17 +87,40 @@ function setOnFocusValue(value) {
     }
 }
 
-function addUniversity() {
+const deactivateButtonContent = `
+<img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea></textarea>
+`;
+
+function addUniversity(index) {
     for(let i = 0; i < ref.children.length; i++) {
         let element = document.createElement("div");
-        let textarea = document.createElement("textarea");
-        element.appendChild(textarea);
+        let textarea = document.body;
+        
+        if(index == 2 && (i == 0 || i == 5)) {
+            if(i === 0) {
+                element.innerHTML = deactivateButtonContent;
+            }
+            else if(i == 5) {
+                textarea = document.createElement("textarea");
+
+                textarea.value = "Y";
+
+                element.appendChild(textarea);
+            }
+        }
+        else {
+            textarea = document.createElement("textarea");
+
+            element.appendChild(textarea);
+        }
+
         
         ref.children[i].insertBefore(element, ref.children[i].children[1]);
 
         addTextareaEventListeners(textarea);
 
-        if(i === 0) {
+
+        if(i === index) {
             textarea.addEventListener("focusout", function() {
                 checkIfSortNewUniversity(this);
             }, {once: true});

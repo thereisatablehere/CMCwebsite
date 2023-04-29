@@ -62,7 +62,7 @@ let popup = {
                 text: "Manage Universities"
             }, 
             {
-                href: "index.html", 
+                href: "manageUsers.html", 
                 text: "Manage Users"
             }, 
             {

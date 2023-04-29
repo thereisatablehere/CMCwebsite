@@ -1,0 +1,137 @@
+<!-- 
+    -Deactivate icon from: https://www.flaticon.com/free-icon/shutdown_3007897?term=shutdown&page=1&position=21&origin=search&related_id=3007897
+ -->
+
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .universitiesContainer {
+            align-self: center;
+        }
+    </style>
+    
+    <title>Manage Users</title>
+    <head>
+</head>
+<body>
+    <!-- add nav bar -->
+    <script src="loadnavbar.js"></script>
+
+    <div id="container">
+        <h1>Manage Users</h1>
+        <p class="topInfo">Here you can view, edit, and add onto the information any of the users currently saved in the database. To edit a user, simply click on the piece of information you want to edit. To confirm your changes press enter or click off of the input, and to cancel your changes hit escape. Note that when adding a new user, after you confirm the username it will automatically get placed in the correct alphabetical position. You can also deactivate a user by clicking the deactivate icon to the left of the user's first name. Also note that passwords are blurred for privacy concerns, when you edit the password of a user you will be able to actually see it.</p>
+
+        <button class="addUniversityButton" onclick="addUniversity(2)">Add a New User</button>
+
+        <div class="universitiesContainer">
+            <div class="column">
+                <div class="columnName farLeft"><p>First</p></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Abilene Christian University</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Adelphi</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>American University of Beirut</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Arizona State</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Aubrun</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Augsburg</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Bard</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Barnard</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Baruch</textarea></div>
+                <div><img class="icon deactivateUser" src="Images/off.png" onclick="deactivateUser(this)"><textarea>Baylor University</textarea></div>
+            </div>
+
+            <div class="column">
+                <div class="columnName"><p>Last</p></div>
+                <div><textarea>Texas</textarea></div>
+                <div><textarea>New York</textarea></div>
+                <div><textarea>Foreign</textarea></div>
+                <div><textarea>Arizona</textarea></div>
+                <div><textarea>Alabama</textarea></div>
+                <div><textarea>Minnesota</textarea></div>
+                <div><textarea>New York</textarea></div>
+                <div><textarea>New York</textarea></div>
+                <div><textarea>New York</textarea></div>
+                <div><textarea>Texas</textarea></div>
+            </div>
+
+            <div class="column">
+                <div class="columnName"><p>Username</p></div>
+                <div><textarea>Suburban</textarea></div>
+                <div><textarea>-1</textarea></div>
+                <div><textarea>Urban</textarea></div>
+                <div><textarea>-1</textarea></div>
+                <div><textarea>Small-City</textarea></div>
+                <div><textarea>Small-City</textarea></div>
+                <div><textarea>Small-City</textarea></div>
+                <div><textarea>Urban</textarea></div>
+                <div><textarea>Urban</textarea></div>
+                <div><textarea>Urban</textarea></div>
+            </div>
+
+            <div class="column">
+                <div class="columnName"><p>Password</p></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+                <div><textarea class="textareaPassword">State</textarea></div>
+                <div><textarea class="textareaPassword">State</textarea></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+                <div><textarea class="textareaPassword">State</textarea></div>
+                <div><textarea class="textareaPassword">Private</textarea></div>
+            </div>
+
+            <div class="column">
+                <div class="columnName"><p>Type</p></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+                <div><textarea>U</textarea></div>
+            </div>
+
+            <div class="column">
+                <div class="columnName farRight"><p>Status</p></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+                <div><textarea>Y</textarea></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="manageUniversititesScrip.js"></script>
+    <script>
+        function deactivateUser(element) {
+            let parent = element.parentNode.parentNode.parentNode.children[0];
+            let childs = Array.from(parent.children);
+            let index = -1;
+
+            for(let i = 0; i < childs.length; i++) {
+                if(childs[i].children[0] === element) {
+                    index = i;
+
+                    break;
+                }
+            }
+
+            element.parentNode.parentNode.parentNode.children[5].children[index].children[0].value = "N";
+
+            // back end: update user status in database
+        }
+    </script>
+</body>
+</html>

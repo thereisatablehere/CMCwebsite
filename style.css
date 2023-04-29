@@ -19,6 +19,8 @@
     --accentColorDarker: #48C9B0;
     --accentColorLighter: #A3E4D7;
     --errorColor: #EF5350;
+    --errorColorLighter: #E57373;
+    --errorColorDarker: #F44336;
     --sidesIndent: 10px;
     --defaultRadius: 5px;
     --smallDefaultRadius: 3px;
@@ -680,8 +682,7 @@ option {
     justify-content: flex-start;
     align-self: flex-start;
     margin-right: 10px;
-    width: 100%;
-    overflow: scroll;
+    max-width: 100%;
     padding-left: 4px;
     /* background-color: orchid; */
 }
@@ -692,8 +693,8 @@ option {
 }
 .universitiesContainer .column div {
     /* background-color: greenyellow; */
-    width: 90%;
-    padding-right: 10%;
+    width: 100%;
+    padding-right: 0;
     border-bottom: 1px solid var(--fourthColor);
 }
 .universitiesContainer .column:last-child {
@@ -708,12 +709,19 @@ option {
     align-items: center;
     background-color: var(--fourthColor);
     text-transform: uppercase;
-    border-radius: var(--defaultRadius);
-    padding-left: 7px;
     padding-bottom: 8%;
     padding-top: 10%;
     height: 50px;
     font-size: 18px;
+}
+.farLeft {
+    border-radius: var(--defaultRadius) 0  0 var(--defaultRadius);
+}
+.farRight {
+    border-radius: 0 var(--defaultRadius) var(--defaultRadius) 0;
+}
+.universitiesContainer .column .columnName p {
+    padding-left: 7px;
 }
 .universitiesContainer .column textarea {
     /* background-color: orchid; */
@@ -731,6 +739,18 @@ option {
     background-color: transparent;
     border-radius: var(--defaultRadius);
 }
+.textareaPassword {
+    color: transparent;
+    text-shadow: 0 0 10px black;
+}
+/* .textareaPassword:hover {
+    color: var(--mainColor);
+    text-shadow: none;
+} */
+.textareaPassword:focus {
+    color: var(--mainColor);
+    text-shadow: none;
+}
 .universitiesContainer .column textarea:hover {
     cursor: pointer;
     background-color: white;
@@ -742,6 +762,16 @@ option {
     /* this margin stuff makes sure that when the border is applied it doesn't cause the other stuff in the table to move */
     margin-bottom: -4px;
     margin-left: -4px;
+}
+.deactivateUser {
+    position: absolute;
+    margin-left: -40px;
+    margin-top: 12px;
+}
+.deactivateUser:hover {
+    cursor: pointer;
+    background-color: var(--errorColorLighter);
+    border-radius: 20px;
 }
 .universitiesContainer::-webkit-scrollbar {
     background-color: transparent;
