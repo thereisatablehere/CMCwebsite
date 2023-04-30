@@ -4,6 +4,9 @@
 /* Import Anuphan font for heading text */
 @import url('https://fonts.googleapis.com/css2?family=Anuphan&display=swap');
 
+/* Import Phudu font for landing page title text */
+@import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300;400;500;600;700;800;900&display=swap');
+
 :root {
     --mainColor: #17202A;
     --secondaryColor: #5D6D7E;
@@ -29,7 +32,6 @@
     --deatailViewHeight: 650px;
 }
 
-
 /* general stuff and home page*/
 
 ::selection {
@@ -46,15 +48,22 @@ body, button, input, select, a, textarea {
 button, select {
     font-weight: bold;
 }
+.siteName {
+    font-family: Phudu;
+    margin-top: 40%;
+    margin-bottom: 0;
+    font-size: 50px;
+    font-weight: 400px;
+}
 h1 {
     font-family: Anuphan, sans-serif;
     font-weight: 900;
-    font-size: 35px;
+    font-size: 40px;
     margin-top: 50px;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
-h3 {
+h4 {
     margin: 0;
 }
 .icon {
@@ -83,6 +92,62 @@ h3 {
 .logo {
     width: 400px;
     margin-top: 10px;
+}
+.landingTop {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.landingImage {
+    width: 50px;
+    height: 50px;
+}
+.logoNotice {
+    font-size: 15px;
+    margin: 0;
+}
+.containerForLandingBottom {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: fit-content;
+    margin-bottom: 9%;
+}
+.landingBottomContainer {
+    /* background-color: red; */
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.landingBottomContainer div {
+    /* background-color: blue; */
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 50px;
+}
+.landingBottomContainer div:last-child {
+    /* background-color: purple; */
+    margin: 0;
+}
+.landingBottomContainer div p {
+    font-size: 18px;
+}
+.landingBottomTitle {
+    margin-bottom: 60px;
+    color: black;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* border-bottom: 1px solid var(--mainColor); */
 }
 
 /* animation */
