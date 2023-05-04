@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .logo {
+            margin-top: 40px;
+        }
+        #container {
+            /* background-color: green; */
+            height: 98vh;
+            justify-content: space-between;
+        }
+    </style>
+    
+    <title>CMC</title>
+    <head>
+</head>
+<body>
+    <!-- add nav bar -->
+    <script src="loadnavbar.js"></script>
+
+    <div id="container">
+        <div class="landingTop">
+            <img class="logo" src="Images/logo.png">
+            <p class="logoNotice">Produly brought to you by the DYFYTUWC team</p>
+            <p class="siteName">CMC</p>
+            <h4>Your home to finding your dream college</h4>
+        </div>
+
+
+        <div class="containerForLandingBottom">
+            <p class="landingBottomTitle">There's so much to explore</p>
+            
+            <div class="landingBottomContainer">
+                <div>
+                    <img class="landingImage" src="Images/diploma.png">
+                    <p>Find the degree right for you</p>
+                </div>
+                
+                <div>
+                    <img class="landingImage" src="Images/way.png">
+                    <p>Find a school anywhere in the US</p>
+                </div>
+    
+                <div>
+                    <img class="landingImage" src="Images/login.png">
+                    <p>Sign into your account and save schools</p>
+                </div>
+        </div>
+
+        </div>
+    </div>
+
+    <script>
+        localStorage.setItem("userType", 0);
+
+        window.open("index.html", "_self");
+    </script>
+</body>
+</html>

@@ -47,6 +47,56 @@ function validateForm() {
 
     }
 
+    if(formIsValid) {
+        let temp = document.getElementById("searchParametersContainer").children;
+        let inputs = [...temp];
+        inputs.splice(0, 1);
+        inputs.splice(inputs.length - 1, 1);
+        let params = [];
+
+        for(let i = 0; i < inputs.length; i++) {
+            let what = inputs[i].children[0].children[1].innerHTML.toLowerCase().replace(" ", "");
+
+            switch(what) {
+                case "schoolname":
+                case "state":
+                    params.push([what, [
+                        inputs[i].children[1].children[1].value, 
+                    ]]);
+
+                    break;
+                case "location":
+                case "control":
+                    params.push([what, [
+                        inputs[i].children[1].children[0].value, 
+                    ]]);
+
+                    break;
+                case "emphases":
+                    params.push([what, [
+                        inputs[i].children[1].children[1].value, 
+                        inputs[i].children[1].children[2].value, 
+                        inputs[i].children[1].children[3].value, 
+                        inputs[i].children[1].children[4].value, 
+                        inputs[i].children[1].children[5].value
+                    ]]);
+
+                    break;
+                default:
+                    params.push([what, [
+                        inputs[i].children[1].children[2].value, 
+                        inputs[i].children[1].children[4].value, 
+                    ]]);
+
+                    break;
+            }
+
+            params.push("|");
+        }
+
+        localStorage.setItem("searchParameters", params);
+    }
+
     highlightInvalids();
 
     return false;

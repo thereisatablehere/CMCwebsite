@@ -748,7 +748,7 @@ option {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 25%;
+    /* margin-left: 25%; */
 }
 .detailedSchoolView{
     background-color: white;

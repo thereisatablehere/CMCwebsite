@@ -49,26 +49,38 @@ function hideTypeInstructions() {
 }
 
 function init() {
-    // set what inputs are editable
-    const editable = [
-        "u", 
-        [0, 1, 3], 
-        "a", 
-        [0, 1, 2, 3, 4]
-    ];
-
-    document.getElementById("type").addEventListener("keydown", validateType);
-
-    let containerRef = document.getElementById("container");
-    let userTypeIndex = editable.indexOf(document.getElementById("type").value) + 1;
-
-    if(userTypeIndex == 1) {
-        document.getElementsByClassName("topInfo")[0].innerHTML += " Because you are only a regular user, you can only edit some of your inormation."
+    let values = [];
+    values.push(localStorage.getItem("firstName"));
+    values.push(localStorage.getItem("lastName"));
+    values.push(localStorage.getItem("username"));
+    values.push(localStorage.getItem("password"));
+    if(localStorage.getItem("userType") == "1") {
+        values.push("u");
+    }
+    else {
+        values.push("a");
     }
 
+    let ref = document.getElementById("container");
+
+    for(let i = 2; i < ref.children.length; i++) {
+        if(ref.children[i].children[0].innerHTML == "Password") {
+            ref.children[i].children[1].children[0].setAttribute("value", values[i - 2]);
+        }
+        else {
+            ref.children[i].children[1].setAttribute("value", values[i - 2]);
+        }
+    }
+
+    // set what inputs are editable
+    const editable = [
+        0, 1, 3
+    ];
+
+    let containerRef = document.getElementById("container");
 
     for(let i = 2; i < containerRef.children.length; i++) {
-        if(editable[userTypeIndex].includes(i - 2)) {
+        if(editable.includes(i - 2)) {
             let ref;
 
             // password and type have a div that other inputs don't
@@ -83,7 +95,7 @@ function init() {
             ref.style.backgroundColor = "white";
 
             ref.addEventListener("input", function() {
-                getInput(this.value);
+                getInput(this);
             });
         
             ref.addEventListener("keydown", clearFocus);
@@ -102,9 +114,39 @@ function init() {
 let inputValue = "";
 let inputValueOnFocus = "";
 
-function getInput(value) {
-    if(!(value === undefined) &&value.length > 0) {
-        inputValue = value;
+function getInput(element) {
+    if(!(element.value === undefined) && element.value.length > 0) {
+        let a = element.parentNode.children[0].innerHTML.toLowerCase();
+        if(element.parentNode.parentNode.className == "profileInfoContainer") {
+            a = element.parentNode.parentNode.children[0].innerHTML.toLowerCase();
+        }
+
+        if(a.includes(" ")) {
+            let b = a.split(" ");
+            a = "";
+            for(let i = 0; i < b.length; i++) {
+                if(i > 0) {
+                    a += b[i].charAt(0).toUpperCase() + b[i].slice(1);
+                }
+                else {
+                    a += b[i];
+                }
+            }
+        }
+
+        let temp = localStorage.getItem(a + "s");
+        b = temp.split(",");
+        for(let i = 0; i < b.length; i++) {
+            if(localStorage.getItem(a) == b[i]) {
+                b[i] = element.value;
+            }
+        }
+
+        localStorage.setItem((a + "s"), b);
+
+        localStorage.setItem(a, element.value);
+
+        inputValue = element.value;
     }
 }
 
